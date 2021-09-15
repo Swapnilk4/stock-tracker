@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'stock-tracker-demo';
+  isAddStockClicked = false;
+  newStock: any;
+  
+  addNewStock(stock) {
+    this.isAddStockClicked =false;
+    this.newStock = stock; 
+  }
 }

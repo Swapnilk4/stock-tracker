@@ -1,0 +1,47 @@
+<div class="table-wrapper">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th class="col-md-2"></th>
+            <th class="col-md-2">Stock</th>
+            <th class="col-md-2">Start</th>
+            <th class="col-md-2">Data Points</th>
+            <th class="col-md-4 text-center" >Graph</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let stock of stocks">
+            <!-- covered point 3 in 'change' event from assignment -->
+            <!-- 3. Once the checkbox is checked the start date is updated -->
+            <td class="col-md-2 checkbox-spacing"> 
+                <div class="content-center ml-4 pl-4">
+                    <input type="checkbox" 
+                    [(ngModel)]="stock.isSelected"
+                    [ngModelOptions]="{standalone: true}"
+                    (change)="stock?.isSelected ? stock.lastCheckedDate = currentDate: stock.lastCheckedDate = undefined"/>
+                </div>
+            </td>
+            <td class="col-md-2">
+                <div class="content-center">
+                    {{ stock?.stockName }}
+                </div>
+            </td>
+            <td class="col-md-2">
+                <div class="content-center">
+                    <td class="col-md-2">{{ (stock?.lastCheckedDate | date:'medium') || stock?.dataPoints[0]?.lt }}</td>
+                </div>
+            </td>
+            <td class="col-md-2">
+                <div class="content-center">
+                    <td class="col-md-2">{{ stock?.dataPoints?.length || 0 }}</td>
+                </div>
+            </td>
+        
+        
+            <td class="col-md-4">
+                <app-line-chart [data]="stock?.dataPoints" [isSelected]="stock?.isSelected"></app-line-chart>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

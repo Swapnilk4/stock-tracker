@@ -1,0 +1,20 @@
+.table-wrapper {
+    margin: 0 16px;
+    .text-center {
+        text-align: center;
+    }
+    .table-overflow {
+        max-height: 40vh;
+        overflow-y: auto;
+    }
+    .content-center {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        min-height: 280px;
+        white-space: nowrap;
+    }
+    .checkbox-spacing {
+        padding: 20px 40px;
+    }
+}
